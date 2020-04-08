@@ -18,7 +18,7 @@ bool menu(vector<colonie>& liste){
 			<< "2 	pour ajouter des territoires à liste de territoires" << endl
 			<< "3 	pour afficher le barycentre des territoires de la liste" << endl
 			<< "4 	pour afficher la liste" << endl
-			<< "5	pour enregistrer la liste dans un fichier texte"
+			<< "5	pour enregistrer la liste dans un fichier texte" << endl
 			<< "6 	pour afficher l'information sur le programme" << endl	
 			<< "0 	pour sortir du programme" << endl;	
 	
