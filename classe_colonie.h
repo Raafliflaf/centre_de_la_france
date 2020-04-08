@@ -54,3 +54,4 @@ colonie moyenne_liste(std::vector<colonie> const& liste);
 
 std::ostream& operator<<(std::ostream& sortie, position const& objet);
 std::ostream& operator<<(std::ostream& sortie, colonie const& objet);
+std::ostream& operator<<(std::ostream& sortie, std::vector<colonie> const& liste);
