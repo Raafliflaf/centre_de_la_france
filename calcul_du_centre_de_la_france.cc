@@ -7,7 +7,7 @@
 
 using namespace std;
 
-enum{FIN, EXTRAIRE, ENTRER, BARYCENTRE, LISTE, AIDE};
+enum{FIN, EXTRAIRE, ENTRER, BARYCENTRE, LISTE, ENREGISTRER, AIDE};
 
 bool menu(vector<colonie>& liste){
 	string fichier;
@@ -18,7 +18,8 @@ bool menu(vector<colonie>& liste){
 			<< "2 	pour ajouter des territoires à liste de territoires" << endl
 			<< "3 	pour afficher le barycentre des territoires de la liste" << endl
 			<< "4 	pour afficher la liste" << endl
-			<< "5 	pour afficher l'information sur le programme" << endl	
+			<< "5	pour enregistrer la liste dans un fichier texte"
+			<< "6 	pour afficher l'information sur le programme" << endl	
 			<< "0 	pour sortir du programme" << endl;	
 	
 	int commande;
@@ -52,6 +53,15 @@ bool menu(vector<colonie>& liste){
 		case LISTE:
 			cout << endl << "Liste des territoires : " << endl
 				<< liste << endl;
+			return true;
+		break;
+
+		case ENREGISTRER:
+			cout << endl << "Nom du fichier :";
+			cin >> fichier;
+			if(sauvegarder(liste, fichier)){
+				cout << "La liste à été sauvegardée." << endl;
+			}
 			return true;
 		break;
 		
