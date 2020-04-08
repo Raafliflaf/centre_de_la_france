@@ -85,6 +85,6 @@ bool menu(vector<colonie>& liste){
 int main() {
 	initialise_info();
 	vector<colonie> liste;
-	while(menu(liste)){}	
+	while(menu(liste)){}
 	return 0;
 }

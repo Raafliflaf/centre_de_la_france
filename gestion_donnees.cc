@@ -72,7 +72,7 @@ bool extraire(string const& fichier, vector<colonie>& liste){
 		while(not entree.eof()){
 			
 			string nom;
-			double superficie, longitude, latitude;
+			double superficie, longitude(0), latitude(0);
 			
 			getline(entree, ligne);
 			if(ligne[0] == '#'){ // tout va bien, sinon on continue a chercher le separateur
@@ -91,13 +91,42 @@ bool extraire(string const& fichier, vector<colonie>& liste){
 				
 				colonie c(nom, superficie, longitude, latitude);
 				liste.push_back(c);
-			}
+			} else if (ligne[0] == '$'){
+				getline(entree, ligne);
+				nom = ligne;
+				
+				getline(entree, ligne);
+				superficie = atof(ligne.c_str());
+				
+				getline(entree, ligne);
+				minsec_vers_decimal(ligne, longitude);
+				
+				getline(entree, ligne);
+				minsec_vers_decimal(ligne, latitude);
+
+				colonie c(nom, superficie, longitude, latitude);
+				liste.push_back(c);				
+				}
 
 		}
 		entree.close();
 		return true;
 	}
 }
+
+bool minsec_vers_decimal(string ligne, double& nombre){
+	nombre = 0;
+	nombre += atoi(ligne.c_str());
+		
+	// enlever les 4 premiers char de la ligne
+	ligne.replace(0, 4, "");
+	nombre += atoi(ligne.c_str())/60.0 ;
+
+	// enlever 3 char
+	ligne.replace(0, 4, "");
+	nombre += atoi(ligne.c_str())/3600.0;
+	return true;
+}	
 
 
 
