@@ -3,8 +3,8 @@
 #include <string>
 #include "classe_colonie.h"
 
-void entrer_colonie(std::vector<colonie>& liste);
+bool entrer_colonie(std::vector<colonie>& liste);
 
 bool sauvegarder(std::vector<colonie> const& liste, std::string fichier);
 
-std::vector<colonie> extraire(std::string const& fichier);
+bool extraire(std::string const& fichier, std::vector<colonie>& liste);

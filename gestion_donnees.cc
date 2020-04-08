@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void entrer_colonie(vector<colonie>& liste){
+bool entrer_colonie(vector<colonie>& liste){
 	string nom;
 	double longitude, latitude, superficie;
 	bool continuer(true);
@@ -31,7 +31,7 @@ void entrer_colonie(vector<colonie>& liste){
 		
 		liste.push_back(colonie(nom, superficie, longitude, latitude));
 	}while(continuer);
-	return;
+	return true;
 }
 
 
@@ -59,16 +59,14 @@ bool sauvegarder(std::vector<colonie> const& liste, std::string fichier){
 }
 
 
-	enum {SEPARATEUR, NOM, SUPERFICIE, LONGITUDE, LATITUDE, LONGUEUR_ENUM};
-vector<colonie> extraire(string const& fichier){
+bool extraire(string const& fichier, vector<colonie>& liste){
 	ifstream entree(fichier);
-	vector<colonie> liste;
 	
 	if(entree.fail()){
 		cerr << "echec de l'ouverture du fichier : " << fichier << endl;
 		entree.close();
 	
-		return liste; // retourne une liste vide
+		return false; // retourne une liste vide
 	} else {
 		string ligne;
 		while(not entree.eof()){
@@ -96,7 +94,8 @@ vector<colonie> extraire(string const& fichier){
 			}
 
 		}
-		return liste;
+		entree.close();
+		return true;
 	}
 }
 
