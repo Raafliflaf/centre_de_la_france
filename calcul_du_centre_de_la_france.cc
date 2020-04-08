@@ -7,15 +7,8 @@
 using namespace std;
 
 	int main() {
-	
-	vector<colonie> Liste;
-	entrer_colonie(Liste);
-	
-	colonie barycentre(moyenne_liste(Liste));	
-	cout << barycentre;
-	
-	Liste.push_back(barycentre);
-	sauvegarder(Liste, "liste.txt");
+	vector<colonie> liste;
+
 	return 0;
 	
 }

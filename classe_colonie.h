@@ -32,16 +32,16 @@ public:
 	
 private:
 	std::string nom;
-	double superficie; // en km²
-	double x, y, z;
+	double superficie; 	// en km²
+	double x, y, z;		// en km? 
 	
 public:
 	double get_x()const{ return x; }
 	double get_y()const{ return y; }
 	double get_z()const{ return z; }
 	position get_coordonees_spheriques()const;	
-	double get_latitude_deg()const;
-	double get_longitude_deg()const;
+	double get_latitude()const;
+	double get_longitude()const;
 	double get_s()const{return superficie;}
 	std::string get_nom()const{ return nom;}	
 	colonie moyenne (colonie const& autre)const; // moyenne : soi et autre
