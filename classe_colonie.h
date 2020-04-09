@@ -5,12 +5,12 @@ double const Pi(3.1415926535);
 
 class position{
 public:
-	position(double r, double longitude, double latitude)
-	:r(r), longitude(longitude), latitude(latitude)
+	position(double r, double latitude, double longitude)
+	:r(r), latitude(latitude), longitude(longitude)
 	{}
 
 private:
-	double r, longitude, latitude; // en radiants
+	double r, latitude, longitude; // en radiants
 	
 public:
 	double get_longitude()const{ return longitude;}
@@ -24,7 +24,7 @@ public:
 	: nom(nom), superficie(superficie), x(x), y(y), z(z)
 	{}
 	
-	colonie(std::string nom, double superficie, double longitude, double latitude);	
+	colonie(std::string nom, double superficie, double latitude, double longitude);	
 	
 	colonie(std::string nom = "")
 	: nom(nom), superficie(0), x(0), y(0), z(0)

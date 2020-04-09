@@ -10,11 +10,11 @@ using namespace std;
 //methodes de position
 
 //methodes de colonie
-colonie::colonie(std::string nom, double superficie, double longitude, double latitude)
+colonie::colonie(std::string nom, double superficie, double latitude, double longitude)
 :nom(nom), superficie(superficie)
 {
-	latitude  *= Pi/180;		//on suppose que l'entree est en degres donc on convertit en radiants
-	longitude *= Pi/180;
+	longitude  *= Pi/180;		//on suppose que l'entree est en degres donc on convertit en radiants
+	latitude *= Pi/180;
 	x = RAYON_TERRE * cos(latitude) * cos(longitude);
 	y = RAYON_TERRE * cos(latitude) * sin(longitude);
 	z = RAYON_TERRE * sin(latitude);
@@ -22,13 +22,13 @@ colonie::colonie(std::string nom, double superficie, double longitude, double la
 
 
 position colonie::get_coordonees_spheriques()const{
-	double r, longitude, latitude;
+	double r, latitude, longitude;
 	
 	r = sqrt((x*x) + (y*y) + (z*z));
 	latitude  = asin(z/r)*180/Pi;		// retourne des angles en degrés
-	longitude = atan2( y, x )*180/Pi;
+	longitude = atan2( y, x )*180/Pi;	// peut etre faux
 	
-	position p(r, longitude, latitude);
+	position p(r, latitude, longitude);
 	return p;
 }
 
@@ -70,8 +70,8 @@ std::ostream& operator<<(std::ostream& sortie, position const& p){
 	if(abs(RAYON_TERRE - p.get_r()) < 1){ d = 0;}
 	else{d = RAYON_TERRE - p.get_r(); }
 	
-	sortie 	<< "longitude : " << p.get_longitude() << " , "
-			<< "latitude : " << p.get_latitude() << " , "
+	sortie 	<< "latitude : " << p.get_latitude() << " , "
+			<< "longitude : " << p.get_longitude() << " , "
 			<< "profondeur : "<< d;
 	return sortie;
 }
