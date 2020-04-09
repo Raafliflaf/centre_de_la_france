@@ -26,7 +26,7 @@ position colonie::get_coordonees_spheriques()const{
 	
 	r = sqrt((x*x) + (y*y) + (z*z));
 	latitude  = asin(z/r)*180/Pi;		// retourne des angles en degrés
-	longitude = atan2( y, x )*180/Pi;
+	longitude = atan2( y, x )*180/Pi;//atan( y/ x )*180/Pi;
 	
 	position p(r, longitude, latitude);
 	return p;
