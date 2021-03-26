@@ -20,3 +20,9 @@ ou encore :
   file = 'testPotentiel2.dat'
   z = 5
   rep
+  
+    a    = .01                       ; # Cette variable contrôle la taille des flèches sur la figure
+  file = 'testPotentiel2-lapl.dat' ; # nom du fichier à dessiner
+  z    = 8                         ; # altitude du plan de dessin
+  set size square ; unset key ;
+  p [-1:30][-1:30] file u ($3 == z ? $1 :1/0):2:(a*$4):(a*$5) w vectors head filled
